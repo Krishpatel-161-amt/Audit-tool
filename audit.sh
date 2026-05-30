@@ -1,5 +1,7 @@
 mkdir -p reports
-echo "--- report file ---" > reports/report.log
+echo "--- Hostname ---"> reports/report.log
+hostname >> reports/report.log 
+echo "--- report file ---" >> reports/report.log
 date >> reports/report.log
 echo "--- all user accounts ---" >> reports/report.log
 cat /etc/passwd >> reports/report.log
