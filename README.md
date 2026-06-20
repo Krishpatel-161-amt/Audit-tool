@@ -1,1 +1,11 @@
-This is a script that scans your system and produces a report about user account - things like accounts with no passwords, checking file permissions on sensitive files and logging it into report file
+# Audit Tool
+
+A simple Bash script to audit system information, user accounts, and world-writable files.
+
+## Usage
+
+```bash
+bash audit.sh
+```
+
+The script will generate a report at `reports/report.log` and log any errors to `reports/error.log`.

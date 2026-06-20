@@ -1,30 +1,35 @@
+#!/bin/bash
+
+# report file path
 report="reports/report.log"
+# gets the hostname
 hname=$(hostname)
-date=$(date)
+# gets current date
+current_date=$(date)
+
+# makes reports folder
 mkdir -p reports
-echo "Your Hostname is $hname"> $report
 
-echo "" >> $report 
-
-echo "Today is $date" >> $report
-
-echo "" >> $report
-
-echo "--- all user accounts ---" >> $report
-echo "" >> $report
-cat /etc/passwd >> $report
-
-echo "" >> $report
-
-echo "--- all login accounts ---" >> $report
-echo "" >> $report
-grep "/bin/bash" /etc/passwd >> $report
-
-echo "" >> $report
-
-echo "--- Sensitive Files world-writable ---" >> $report
-echo "" >> $report
-find ~ -perm -o+w >> $report 2> reports/error.log
-
-
-
+# saves hostname
+echo "Your Hostname is $hname" > "$report"
+echo "" >> "$report"
+# saves date
+echo "Today is $current_date" >> "$report"
+echo "" >> "$report"
+# prints header for user accounts
+echo "--- all user accounts ---" >> "$report"
+echo "" >> "$report"
+# gets all users
+cat /etc/passwd >> "$report"
+echo "" >> "$report"
+# prints header for login accounts
+echo "--- all login accounts ---" >> "$report"
+echo "" >> "$report"
+# finds bash users
+grep "/bin/bash" /etc/passwd >> "$report"
+echo "" >> "$report"
+# prints header for writable files
+echo "--- Sensitive Files world-writable ---" >> "$report"
+echo "" >> "$report"
+# finds writable files in home dir
+find ~ -perm -o+w >> "$report" 2> reports/error.log
